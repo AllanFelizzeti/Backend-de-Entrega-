@@ -1,14 +1,17 @@
 import { Router } from "express";
-import { AuthenticateClientControlller } from "./modules/account/authenticateClient/AuthenticateClientController";
+import { AuthenticateClientController } from "./modules/account/authenticateClient/AuthenticateClientController";
 import { CreateClientController } from "./modules/clients/useCases/createClient/CreateClientController";
+import { CreateDeliverymanController } from "./modules/deliveryman/useCases/createDeliveryman/CreateDeliverymanController";
 
 const routes = Router();
 
 const createClientController = new CreateClientController();
-const authenticaClientController = new AuthenticateClientControlller();
+const authenticaClientController = new AuthenticateClientController();
+const createDeliverymanController = new CreateDeliverymanController();
 
 routes.post("/authenticate/", authenticaClientController.handle);
 
 routes.post("/client/", createClientController.handle);
+routes.post("/deliveryman/", createDeliverymanController.handle);
 
 export { routes };
